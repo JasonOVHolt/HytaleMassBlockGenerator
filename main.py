@@ -1,6 +1,7 @@
 import json
 import os
 import iconCreation
+from PIL import Image
 
 numIter = 38
 id = "BirchPlank"
@@ -82,3 +83,8 @@ for i in range(numIter):
         os.makedirs(cwd + "\\Icons\\" + id + "\\")
 
     iconCreation.generate_padded_cube(image_path + "\\" + files[i], cwd + "\\Icons\\" + id + "\\" + newFileNames[i] + "_Icon.png")
+
+for f in files:
+    currentImage = Image.open(image_path + "\\" + f)
+    resizedImage = currentImage.resize((32, 32))
+    resizedImage.save(image_path + "\\" + f)
